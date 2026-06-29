@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: workshop
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/workshop?currentSchema=dev
+    username: postgres
+    password: 172612100
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      connection-timeout: 20000
+
+    jdbc:
+      template:
+        query-timeout: 5
+
+    flyway:
+      enabled: true
+      baseline-on-migrate: true
+      locations: classpath:db/migration
+
+logging:
+  level:
+    root: INFO
+    com.asein: DEBUG
+    org.springframework.jdbc.core: DEBUG
+
+jwt:
+  secret: "iIdEFo+WY5TuYwi/w01ikV0SxvPLpKTxQSjLuJ4JsLc="
+  expiration: 15m   # 1 day (ms)
+
+app:
+  timezone: Asia/Jakarta
