@@ -4,11 +4,13 @@ import com.asein.workshop.workorder.dto.WorkOrderListResponse;
 import com.asein.workshop.workorder.dto.WorkOrderRowMapper;
 import com.asein.workshop.workorder.dto.WorkOrderResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class WorkOrderRepository {
     private final JdbcTemplate db;
 

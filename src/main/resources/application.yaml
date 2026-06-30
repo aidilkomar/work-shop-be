@@ -6,9 +6,9 @@ spring:
     name: workshop
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/workshop?currentSchema=dev
+    url: jdbc:postgresql://localhost:5432/workshop?currentSchema=public
     username: postgres
-    password: 172612100
+    password: 902000
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10

@@ -8,7 +8,10 @@ CREATE TABLE parts (
     selling_price NUMERIC(12,2) DEFAULT 0,
 
     stock INT DEFAULT 0,
-    min_stock INT DEFAULT 0
+    min_stock INT DEFAULT 0,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
 );
 
 CREATE INDEX idx_parts_name ON parts(name);

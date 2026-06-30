@@ -34,7 +34,7 @@ public class UserRepository {
 
     public UserResponse save(User user) {
         String sql = """
-                insert into dev.users (username, password, full_name, role, is_active, created_at)
+                insert into users (username, password, full_name, role, is_active, created_at)
                 values(?, ?, ?, ?, ?, ?)
                 """;
 
@@ -57,7 +57,7 @@ public class UserRepository {
     }
 
     public Optional<User> findById(long id) {
-        String sql = "SELECT * FROM dev.users WHERE id = ?";
+        String sql = "SELECT * FROM users WHERE id = ?";
 
         try {
             User user = jdbcTemplate.queryForObject(
@@ -74,7 +74,7 @@ public class UserRepository {
 
     public Optional<UserResponse> update(User u) {
         String sql = """
-            UPDATE dev.users
+            UPDATE users
             SET username = ?,
                 full_name = ?,
                 role = ?,
@@ -112,7 +112,7 @@ public class UserRepository {
 
     public Optional<UserResponse> updatePassword(User u) {
         String sql = """
-            UPDATE dev.users
+            UPDATE users
             SET password = ?
             WHERE id = ?
             """;
@@ -144,7 +144,7 @@ public class UserRepository {
 
     public boolean delete(long id) {
         String sql = """
-                DELETE FROM dev.users WHERE id = ?
+                DELETE FROM users WHERE id = ?
                 """;
 
         return jdbcTemplate.update(sql, id) > 0;
@@ -158,7 +158,7 @@ public class UserRepository {
 
         StringBuilder sql = new StringBuilder("""
             SELECT id, username, full_name, role, is_active
-            FROM dev.users
+            FROM users
             WHERE 1 = 1
             """);
 

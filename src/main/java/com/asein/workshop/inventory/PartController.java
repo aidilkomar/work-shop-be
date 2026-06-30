@@ -15,12 +15,18 @@ import java.util.List;
 @RequestMapping("/api/part")
 public class PartController {
 
-    @PostMapping
+    private final PartService partService;
+
+    public PartController(PartService partService) {
+        this.partService = partService;
+    }
+
+    @PostMapping("/create")
     public ResponseEntity<ApiResponse<PartResponse>> create(@Valid @RequestBody PartCreateRequest req) {
         return ResponseEntity.ok(
                 ApiResponse.success(
                         "data has created",
-                        null
+                        partService.create(req)
                 )
         );
     }
