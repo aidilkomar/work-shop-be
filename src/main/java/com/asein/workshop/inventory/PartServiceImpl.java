@@ -1,5 +1,6 @@
 package com.asein.workshop.inventory;
 
+import com.asein.workshop.common.exception.ConflictException;
 import com.asein.workshop.inventory.dto.PartCreateRequest;
 import com.asein.workshop.inventory.dto.PartResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,11 @@ public class PartServiceImpl implements PartService {
     @Override
     public PartResponse create(PartCreateRequest req) {
         Optional<Part> skuExist = partRepository.findBySku(req.sku());
+
+        if (skuExist.isPresent()) {
+            throw new ConflictException("sku already exists");
+        }
+
         return null;
     }
 }
